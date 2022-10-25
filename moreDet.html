@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="/css/materialize.min.css">
+
+    <script type="text/javascript" src="/js/materialize.min.js"></script>
+
+    <link rel="stylesheet" src="/css/app.css">
+    <link rel="manifest" href="/manifest.json">
+
+    <title>Mappan - More Details</title>
+</head>
+
+<body class="pink lighten-5">
+    <div class="container">
+
+        <nav class="nav-wrapper pink lighten-3">
+            <div class="container">
+                <a href="#" class="brand-logo">Union Name</a>
+                <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                    <i class="material-icons">menu</i>
+                </a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Today</a></li>
+                    <li><a href="#">Calendar</a></li>
+                    <li><a href="#">Stock</a></li>
+                    <li><a href="#" class="btn-floating orange darken-1 z-depth-0">
+                        <i class="material-icons">notifications</i>
+                        </a></li>
+                    <li><span class="badge white-text black new">5</span></li>
+
+                </ul>
+            </div>
+        </nav>
+
+        <ul class="sidenav pink lighten-3 white-text" id="mobile-links">
+            <li><h2 class="center">Binder</h2></li>
+            <li><a class="white-text" href="index.html">Today<i class="material-icons">assignment</i></a></li>
+            <li><a class="white-text" href="calendar.html">Calendar<i class="material-icons">event</i></a></li>
+            <li><a class="white-text" href="houses.html">Houses<i class="material-icons">house</i></a></li>
+            <li><a class="white-text" href="stock.html">Stock<i class="material-icons">archive</i></a></li>
+        </ul>
+
+
+    </div>
+
+
+    <!-- Jquery-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.sidenav').sidenav();
+        })
+    </script>
+
+    <script src="/js/ui.js"></script>
+
+</body>
+</html>

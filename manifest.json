@@ -1,0 +1,20 @@
+{
+    "name": "Mappan",
+    "short_name": "Mappan",
+    "description": "Service app for holiday houses",
+    "start_url": "/index.html",
+    "scope": ".",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#fce4ec",
+    "theme_color": "#f48fb1",
+    "dir": "ltr",
+    "lang": "en-US",
+    "icons": [
+        {
+            "src": "/img/binder.jpg",
+            "type": "image/jpg",
+            "sizes": "1200x1200"
+        }
+    ]
+}
