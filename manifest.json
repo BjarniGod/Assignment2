@@ -1,6 +1,6 @@
 {
-    "name": "Mappan",
-    "short_name": "Mappan",
+    "name": "Binder",
+    "short_name": "Binder",
     "description": "Service app for holiday houses",
     "start_url": "/index.html",
     "scope": ".",
