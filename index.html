@@ -16,64 +16,34 @@
 <body class="pink lighten-5">
 
     <!-- SIDENAV -->
-    <nav class="z-depth-0">
-            <a href="#" class="brand-logo">Calendar</a>
-            <a href="#" class="sidenav-trigger" data-target="mobile-links">
-                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+    <nav class="z-depth-0 pink lighten-3 white-text">
+            <a href="#" class="brand-logo" id="page-title">Recent Houses</a>
+            <a href="#" class="sidenav-trigger" id="menu-button">
+                <i class="material-icons" data-target="side-menu">menu</i>
             </a>
     </nav>
     
     <ul id="side-menu" class="sidenav side-menu pink lighten-3 white-text">
-        <li><h2 class="center">Binder</h2></li>
-        <li><a class="white-text" href="index.html">Today<i class="material-icons">assignment</i></a></li>
-        <li><a class="white-text" href="/pages/calendar.html">Calendar<i class="material-icons">event</i></a></li>
-        <li><a class="white-text" href="/pages/houses.html">Houses<i class="material-icons">house</i></a></li>
-        <li><a class="white-text" href="/pages/stock.html">Stock<i class="material-icons">archive</i></a></li>
+        <li id="li-menu"><h2 class="center">Binder</h2></li>
+        <li id="li-menu"><a class="white-text" href="index.html">Recent Houses<i class="material-icons">assignment</i></a></li>
+        <li id="li-menu"><a class="white-text" href="#">Calendar<i class="material-icons">event</i></a></li>
+        <li id="li-menu"><a class="white-text" href="#">Houses<i class="material-icons">house</i></a></li>
+        <li id="li-menu"><a class="white-text" href="#">Stock<i class="material-icons">archive</i></a></li>
 
     </ul>
-    <!-- SIDENAV -->
 
-    
-    <!-- ADD BUTTON -->
-    <!-- <div class="btn" onClick="myObj.show()" id="show">New Task</div> -->
-
-    <!-- <div class="center">
-        <a class="btn-block btn-large waves-effect waves-light white add-btn sidenav-trigger" onClick="myObj.show()" id="show" data-target="side-form">
-            <i class="material-icons black-text">add</i>
-        </a>
-        </div> -->
 
 
     <!-- FORM -->
-    <div class="row">
-        <!-- <form class="animated fadeIn" id="form"> -->
-        <!-- <div class="">
-        <div class="container">
+    <div class="container center-align">
 
-            <input type="text" id="name" placeholder="Name">
-            <input type="text" id="subject" placeholder="Subject">
-            <input type="date" id="myDate">
-        </div>
-            
-        <div class="row container">
-            <div class="s10 l10 m10">
-            <textarea id="description" placeholder="Describe the Task" cols="30" rows="10" onClick="myObj.textSelect(this)"> Describe Your Task</textarea>           
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="btn" onclick="submitInfo()">SUBMIT</div>
-            <div class="btn" onclick="myObj.hide()">HIDE</div>
-        </div>
-
-        </div> -->
-
+        
         <form id="add-house-form">
         <input type="text" name="id" placeholder="House ID">
         <input type="text" name="address" placeholder="Address">
-        <input type="number" name="pckage" placeholder="Package">
+        <input type="text" name="pckage" placeholder="Package">
         <input type="text" name="union" placeholder="Union">
-        <button>Add House</button>
+        <button class="btn-block btn-large waves-effect waves-light center-align"><i class="material-icons text_black">add</i></button>
 
 
         </form>
@@ -130,7 +100,8 @@
             address.textContent = dc.data().address;
             pckage.textContent = dc.data().pckage;
             union.textContent = dc.data().union;
-            cross.textcontent = 'x';
+            cross.setAttribute('id', 'cross-id');
+            cross.textContent = 'DELETE';
 
             li.appendChild(id);
             li.appendChild(address);
