@@ -1,5 +1,5 @@
 {
-  "name": "Binder",
+  "name": "project",
   "version": "1.0.0",
   "description": "Binder application",
   "main": "sw.js",

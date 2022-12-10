@@ -1,0 +1,94 @@
+
+
+
+@media only screen and (max-width: 2000px) {
+  nav .brand-logo {
+    left:50%;
+    -webkit-transform:translateX(-50%);
+    transform:translateX(-50%)
+  }
+}
+
+  
+  #houses-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #side-menu {
+    padding: 0px;
+    background: black;
+  }
+
+  #li-menu {
+    padding: 0px;
+    background: none;
+    border-bottom: none;
+    height: auto;
+    color: white;
+  }
+
+  li {
+    padding: 0px;
+    background: #f6f6f6;
+    font-size: 20px;
+    color: #555;
+    position: relative;
+    border-bottom: 1px solid #e6e6e6;
+    height: 100pt;
+    
+  }
+
+   span:nth-child(1) {
+    font-size: 40px;
+    margin-top: 6px;
+    color: #999;
+  }
+  
+  li span {
+    display: block;
+  }
+  
+  
+  li div {
+    position: absolute;
+    top: 0;
+    right: 0px;
+    background: rgba(223, 5, 5, 0.6);
+    width: 30pt;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    height: 100pt;
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    font-size: 14px;
+  }
+  
+  form input {
+    float: left;
+    width: 38%;
+    margin: 0;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    margin: 0 1%;
+    padding: 10px;
+    display: block;
+    box-sizing: border-box;
+    font-size: 18px;
+  }
+  
+  form input:focus {
+    outline: none;
+    border-bottom: 3px solid #88236f;
+    padding-bottom: 8px;
+    transition: all ease 0.2s;
+  }
+  
+  form:after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+
