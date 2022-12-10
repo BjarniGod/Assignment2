@@ -4,7 +4,10 @@ self.addEventListener("install", function(event){
     //The purpose of this event is to give the service worker a place to setup local
     // environment after the installation completes
     console.log('SW: Event fired: ' + event.type);
-
+    // event.waitUntil(caches.open('static').then(function(cache){
+    //     console.log("SW: Precaching App Shell");
+    //     cache.add(index.html)
+    // }))
 });
 
 self.addEventListener("activate", function(event){
@@ -13,9 +16,9 @@ self.addEventListener("activate", function(event){
 
 });
 
-// self.addEventListener("fetch", function(event){
-//     //Fires whenever the app requests a resource (file or data)
-//     console.log('SW: Fetching ' + event.request.url);
-//     //next, go get the requested resource from the network
-//     event.respondWith(fetch(event.request));
-// });
+self.addEventListener("fetch", function(event){
+    //Fires whenever the app requests a resource (file or data)
+    console.log('SW: Fetching ' + event.request.url);
+    //next, go get the requested resource from the network
+    event.respondWith(fetch(event.request));
+});
