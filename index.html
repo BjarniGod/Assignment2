@@ -37,17 +37,17 @@
     <!-- ADD BUTTON -->
     <!-- <div class="btn" onClick="myObj.show()" id="show">New Task</div> -->
 
-    <div class="center">
+    <!-- <div class="center">
         <a class="btn-block btn-large waves-effect waves-light white add-btn sidenav-trigger" onClick="myObj.show()" id="show" data-target="side-form">
             <i class="material-icons black-text">add</i>
         </a>
-        </div>
+        </div> -->
 
 
     <!-- FORM -->
-    <section><div class="row">
-        <form class="animated fadeIn" id="form">
-        <div class="">
+    <div class="row">
+        <!-- <form class="animated fadeIn" id="form"> -->
+        <!-- <div class="">
         <div class="container">
 
             <input type="text" id="name" placeholder="Name">
@@ -66,16 +66,28 @@
             <div class="btn" onclick="myObj.hide()">HIDE</div>
         </div>
 
-        </div>
+        </div> -->
+
+        <form id="add-house-form">
+        <input type="text" name="id" placeholder="House ID">
+        <input type="text" name="address" placeholder="Address">
+        <input type="number" name="pckage" placeholder="Package">
+        <input type="text" name="union" placeholder="Union">
+        <button>Add House</button>
+
+
         </form>
-    </div></section>
+
+        <ul id="houses-list"></ul>
+    </div>
+
 
     <div class="row" style="text-align:center;" id="myTasks"></div>
 
     <script type="module">
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
-        import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
+        import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
@@ -95,20 +107,82 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        async function getHouses(app) {
+        async function getHouses(db) {
             const housesCol = collection(db, "Houses");
             const housesSnapshot = await getDocs(housesCol);
             const housesList = housesSnapshot.docs.map((doc) => doc.data());
             return housesList;
         }
 
-        const houses = getHouses(db).then((snapshot) => {
+        const housesList = document.querySelector('#houses-list');
+        const form = document.querySelector('#add-house-form')
+
+        function renderHouses(dc) {
+            let li = document.createElement("li");
+            let id = document.createElement("span");
+            let address = document.createElement("span");
+            let pckage = document.createElement("span");
+            let union = document.createElement("span");
+            let cross = document.createElement("div");
+
+            li.setAttribute('data-id', dc.id);
+            id.textContent = dc.data().id;
+            address.textContent = dc.data().address;
+            pckage.textContent = dc.data().pckage;
+            union.textContent = dc.data().union;
+            cross.textcontent = 'x';
+
+            li.appendChild(id);
+            li.appendChild(address);
+            li.appendChild(pckage);
+            li.appendChild(union);
+            li.appendChild(cross);
+
+            housesList.appendChild(li);
+
+            cross.addEventListener('click', (e) => {
+                e.stopPropagation();
+                let id = e.target.parentElement.getAttribute('data-id');
+                deleteDoc(doc(db, "Houses", id))
+            })
+
+        }
+
+        const houses = getDocs(collection(db, "Houses")).then((snapshot) => {
             snapshot.forEach((doc) => {
-                console.log(doc)
+                renderHouses(doc)
             })
         })
 
-        console.log(getHouses(db));
+        // const houses = getHouses(db).then((snapshot) => {
+        //     snapshot.forEach((doc) => {
+        //         renderHouses(doc)
+        //     })
+        // })
+
+        // const q = query(collection(db, "Houses"), where("city", "==", "hays"));
+        // const querySnapshot = await getDocs(q);
+        // querySnapshot.forEach((doc) => {
+        //     console.log(doc.id, "=>", doc.data())
+        // })
+
+        // const upDoc = doc(db, "Houses", "VR 7");
+
+        // updateDoc(upDoc, {
+        //     name: "Papa murphy"
+        // })
+
+        form.addEventListener(('submit'), (e) => {
+            e.preventDefault();
+            const docRef = addDoc(collection(db, "Houses"), {
+                id: form.id.value,
+                address: form.address.value,
+                package: form.pckage.value,
+                union: form.union.value
+            })
+        })
+
+    
     </script>
 
 
