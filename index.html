@@ -18,8 +18,8 @@
     <!-- SIDENAV -->
     <nav class="z-depth-0 pink lighten-3 white-text">
             <a href="#" class="brand-logo" id="page-title">Recent Houses</a>
-            <a href="#" class="sidenav-trigger" id="menu-button">
-                <i class="material-icons" data-target="side-menu">menu</i>
+            <a href="#" class="sidenav-trigger" data-target="side-menu" id="menu-button">
+                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
             </a>
     </nav>
     
@@ -89,13 +89,17 @@
 
         function renderHouses(dc) {
             let li = document.createElement("li");
+            // let update = document.createElement("div")
             let id = document.createElement("span");
             let address = document.createElement("span");
             let pckage = document.createElement("span");
             let union = document.createElement("span");
             let cross = document.createElement("div");
+            
 
             li.setAttribute('data-id', dc.id);
+            // update.setAttribute('id', 'update-id');
+            // cross.textContent= 'UPDATE';
             id.textContent = dc.data().id;
             address.textContent = dc.data().address;
             pckage.textContent = dc.data().pckage;
@@ -103,6 +107,7 @@
             cross.setAttribute('id', 'cross-id');
             cross.textContent = 'DELETE';
 
+            // li.appendChild(update);
             li.appendChild(id);
             li.appendChild(address);
             li.appendChild(pckage);
@@ -116,6 +121,12 @@
                 let id = e.target.parentElement.getAttribute('data-id');
                 deleteDoc(doc(db, "Houses", id))
             })
+
+            // cross.addEventListener('click', (e) => {
+            //     e.stopPropagation();
+            //     let id = e.target.parentElement.getAttribute('data-id');
+            //     updateDoc(doc(db, "Houses", id))
+            // })
 
         }
 
