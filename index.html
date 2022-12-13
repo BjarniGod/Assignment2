@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/app.css">
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <link rel="manifest" href="/manifest.json">
+    <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
 </head>
 
 <body class="pink lighten-5">
@@ -30,6 +32,15 @@
         <li id="li-menu"><a class="white-text" href="/pages/houses.html">Houses<i class="material-icons">house</i></a></li>
         <li id="li-menu"><a class="white-text" href="/pages/stock.html">Stock<i class="material-icons">archive</i></a></li>
 
+        <div id="formContainer" class="container">
+            <div id="header" class="white-text">Sign in</div>
+    
+            <input type="email" placeholder="Email" id="email"/>
+            <input type="password" placeholder="Password" id="password"/>
+    
+            <button class="btn-block waves-effect waves-light" onclick="signUp()" id="signUp"> Sign Up </button>
+            <button class="btn-block waves-effect waves-light" onclick="signIn()" id="signIn"> Sign In </button>
+        </div>
     </ul>
 
 
@@ -37,7 +48,7 @@
     <!-- FORM -->
     <div class="container center-align">
 
-        
+        <h3 class="left-align white-text">New House</h3>
         <form id="add-house-form">
         <input type="text" name="id" placeholder="House ID">
         <input type="text" name="address" placeholder="Address">
@@ -58,7 +69,8 @@
         
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-app.js";
         import { getFirestore, collection, getDocs, addDoc, doc, deleteDoc, query, where, updateDoc } from "https://www.gstatic.com/firebasejs/9.14.0/firebase-firestore.js";
-        // TODO: Add SDKs for Firebase products that you want to use
+        import { getAuth } from "https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js";
+         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
       
         // Your web app's Firebase configuration
@@ -76,6 +88,7 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
 
         async function getHouses(db) {
             const housesCol = collection(db, "Houses");
@@ -165,6 +178,23 @@
         })
 
     
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        ui.start('#firebaseui-auth-container', {
+            signInOptions: [
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            // Other config options...
+        });
+
+        function signUp() {
+            var email = document.getElementById("email");
+            var password = document.getElementById("password");
+
+            const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
+            promise.catch(e => alert(e.message));
+        }
+
     </script>
 
 
